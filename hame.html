@@ -1,0 +1,60 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            font-size: 48px;
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ffd700;
+            cursor: pointer;
+        }
+        .score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="button" id="clickButton">🌕</button>
+        <div class="score" id="score">Счет: 0 | Энергия: 1000</div>
+    </div>
+    <script>
+        let score = 0;
+        let energy = 1000;
+
+        document.getElementById('clickButton').addEventListener('click', () => {
+            if (energy > 0) {
+                score += 1;
+                energy -= 1;
+                document.getElementById('score').textContent = `Счет: ${score} | Энергия: ${energy}`;
+            }
+        });
+
+        // Simulate energy restoration
+        setInterval(() => {
+            if (energy < 1000) {
+                energy += 1;
+                document.getElementById('score').textContent = `Счет: ${score} | Энергия: ${energy}`;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
